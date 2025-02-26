@@ -1,4 +1,4 @@
-import { ChainId, TokenAmount, JSBI } from '@uniswap/sdk'
+import { ChainId, TokenAmount, JSBI } from '@piggycoin/sdk'
 import React, { useState } from 'react'
 import { Text } from 'rebass'
 import { NavLink, withRouter } from 'react-router-dom'
@@ -231,10 +231,7 @@ const StyledNavLink = styled(NavLink).attrs({
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
-  [ChainId.RINKEBY]: 'Rinkeby',
-  [ChainId.ROPSTEN]: 'Ropsten',
-  [ChainId.GÖRLI]: 'Görli',
-  [ChainId.KOVAN]: 'Kovan'
+  [ChainId.BSC_MAINNET]: 'Rinkeby'
 }
 
 function Header({ history }: { history: any }) {

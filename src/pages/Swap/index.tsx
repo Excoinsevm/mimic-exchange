@@ -1,4 +1,4 @@
-import { CurrencyAmount, JSBI, Token, Trade } from '@uniswap/sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from '@piggycoin/sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
 import ReactGA from 'react-ga'
@@ -46,7 +46,6 @@ import { ClickableText } from '../Pool/styleds'
 import Loader from '../../components/Loader'
 
 import { useDarkModeManager } from '../../state/user/hooks'
-import styled from 'styled-components'
 // import Logo from '../../assets/svg/logo.png'
 // import LogoDark from '../../assets/svg/logo.png'
 
@@ -276,6 +275,7 @@ export default function Swap() {
   //     transform: rotate(-5deg);
   //   }
   // `
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isDark] = useDarkModeManager()
   return (
     <>

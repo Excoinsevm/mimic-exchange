@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk'
+import { ChainId } from '@piggycoin/sdk'
 import { createStore, Store } from 'redux'
 import { addTransaction, checkedTransaction, clearAllTransactions, finalizeTransaction } from './actions'
 import reducer, { initialState, TransactionState } from './reducer'
@@ -15,7 +15,7 @@ describe('transaction reducer', () => {
       const beforeTime = new Date().getTime()
       store.dispatch(
         addTransaction({
-          chainId: ChainId.MAINNET,
+          chainId: ChainId.BSC_MAINNET,
           summary: 'hello world',
           hash: '0x0',
           approval: { tokenAddress: 'abc', spender: 'def' },
@@ -23,9 +23,9 @@ describe('transaction reducer', () => {
         })
       )
       const txs = store.getState()
-      expect(txs[ChainId.MAINNET]).toBeTruthy()
-      expect(txs[ChainId.MAINNET]?.['0x0']).toBeTruthy()
-      const tx = txs[ChainId.MAINNET]?.['0x0']
+      expect(txs[ChainId.BSC_MAINNET]).toBeTruthy()
+      expect(txs[ChainId.BSC_MAINNET]?.['0x0']).toBeTruthy()
+      const tx = txs[ChainId.BSC_MAINNET]?.['0x0']
       expect(tx).toBeTruthy()
       expect(tx?.hash).toEqual('0x0')
       expect(tx?.summary).toEqual('hello world')
@@ -162,7 +162,7 @@ describe('transaction reducer', () => {
     it('removes all transactions for the chain', () => {
       store.dispatch(
         addTransaction({
-          chainId: ChainId.MAINNET,
+          chainId: ChainId.BSC_MAINNET,
           summary: 'hello world',
           hash: '0x0',
           approval: { tokenAddress: 'abc', spender: 'def' },
@@ -179,13 +179,13 @@ describe('transaction reducer', () => {
         })
       )
       expect(Object.keys(store.getState())).toHaveLength(2)
-      expect(Object.keys(store.getState())).toEqual([String(ChainId.MAINNET), String(ChainId.RINKEBY)])
-      expect(Object.keys(store.getState()[ChainId.MAINNET] ?? {})).toEqual(['0x0'])
+      expect(Object.keys(store.getState())).toEqual([String(ChainId.BSC_MAINNET), String(ChainId.RINKEBY)])
+      expect(Object.keys(store.getState()[ChainId.BSC_MAINNET] ?? {})).toEqual(['0x0'])
       expect(Object.keys(store.getState()[ChainId.RINKEBY] ?? {})).toEqual(['0x1'])
-      store.dispatch(clearAllTransactions({ chainId: ChainId.MAINNET }))
+      store.dispatch(clearAllTransactions({ chainId: ChainId.BSC_MAINNET }))
       expect(Object.keys(store.getState())).toHaveLength(2)
-      expect(Object.keys(store.getState())).toEqual([String(ChainId.MAINNET), String(ChainId.RINKEBY)])
-      expect(Object.keys(store.getState()[ChainId.MAINNET] ?? {})).toEqual([])
+      expect(Object.keys(store.getState())).toEqual([String(ChainId.BSC_MAINNET), String(ChainId.RINKEBY)])
+      expect(Object.keys(store.getState()[ChainId.BSC_MAINNET] ?? {})).toEqual([])
       expect(Object.keys(store.getState()[ChainId.RINKEBY] ?? {})).toEqual(['0x1'])
     })
   })
