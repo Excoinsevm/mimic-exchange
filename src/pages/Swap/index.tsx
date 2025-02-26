@@ -283,7 +283,7 @@ export default function Swap() {
         <img width={'70px'} src={isDark ? LogoDark : Logo} alt="logo" />
       </MimicIcon> */}
       <Text style={{ marginBottom: '20px' }}>
-        <h1>Mimic Swap</h1>
+        <h1>PiggySwap</h1>
       </Text>
       <TokenWarningModal
         isOpen={urlLoadedTokens.length > 0 && !dismissTokenWarning}

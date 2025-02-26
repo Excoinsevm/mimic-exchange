@@ -231,7 +231,7 @@ const StyledNavLink = styled(NavLink).attrs({
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
-  [ChainId.BSC_MAINNET]: 'Rinkeby'
+  [ChainId.BSC_MAINNET]: 'Binance'
 }
 
 function Header({ history }: { history: any }) {
@@ -264,26 +264,14 @@ function Header({ history }: { history: any }) {
       <HeaderRow>
         <Title style={{ textDecoration: 'none' }} href=".">
           <MimicIcon>
-            <img width={'36px'} src={isDark ? LogoDark : Logo} alt="logo" />
+            <img
+              width={'36px'}
+              src="https://framerusercontent.com/images/oxSOsKlmgHe6Y4ZDVfOXmADNDY.png?scale-down-to=512"
+              alt="logo"
+            />
           </MimicIcon>
-          <div style={{ color: isDark ? 'white' : 'black' }}>Mimic Exchange</div>
+          <div style={{ color: isDark ? 'white' : 'black' }}>PiggySwap</div>
         </Title>
-        <HeaderLinks>
-          <StyledNavLink id={`swap-nav-link`} to={'/swap'} isActive={() => history.location.pathname.includes('/swap')}>
-            {t('swap')}
-          </StyledNavLink>
-          <StyledNavLink
-            id={`pool-nav-link`}
-            to={'/pool'}
-            isActive={() =>
-              history.location.pathname.includes('/pool') ||
-              history.location.pathname.includes('/add') ||
-              history.location.pathname.includes('/remove')
-            }
-          >
-            {t('pool')}
-          </StyledNavLink>
-        </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
         <HeaderElement>

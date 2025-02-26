@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@piggycoin/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
-import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
+import { injected, portis, walletconnect, walletlink } from '../connectors'
 
 export const ROUTER_ADDRESS = '0x10ED43C718714eb63d5aA57B78B54704E256024E'
 
@@ -85,10 +85,6 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
   [ChainId.BSC_MAINNET]: [
-    [
-      new Token(ChainId.BSC_MAINNET, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'),
-      new Token(ChainId.BSC_MAINNET, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin')
-    ],
     [USDC, USDT],
     [DAI, USDT]
   ]
@@ -124,6 +120,15 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     href: null,
     color: '#E8831D'
   },
+  TRUST_WALLET: {
+    connector: injected,
+    name: 'Trust Wallet',
+    iconName: 'trustwlt.png',
+    description: 'Login using Trust Wallet',
+    href: null,
+    color: '#6748FF',
+    mobile: true
+  },
   WALLET_CONNECT: {
     connector: walletconnect,
     name: 'WalletConnect',
@@ -149,24 +154,6 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     color: '#315CF5',
     mobile: true,
     mobileOnly: true
-  },
-  FORTMATIC: {
-    connector: fortmatic,
-    name: 'Fortmatic',
-    iconName: 'fortmaticIcon.png',
-    description: 'Login using Fortmatic hosted wallet',
-    href: null,
-    color: '#6748FF',
-    mobile: true
-  },
-  Portis: {
-    connector: portis,
-    name: 'Portis',
-    iconName: 'portisIcon.png',
-    description: 'Login using Portis hosted wallet',
-    href: null,
-    color: '#4A6C9B',
-    mobile: true
   }
 }
 
